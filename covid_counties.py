@@ -1,6 +1,6 @@
 import csv
 
-s=open('us-counties.csv')
+s=open('new-york-times-source-us-counties.csv')
 counties=csv.reader(s)
 
 header = counties.next()
