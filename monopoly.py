@@ -31,7 +31,7 @@ while xx_half > 0:
 len(lst)
 
 for i in x:
- print ("{:5}{:25}{:25}{:15}{:15}".format(i['rank'],i['company'],i['market-cap'],i['sector'],i['date']))
+ print ("{:5}{:25}{:25}{:15}{:12}{:15}".format(i['rank'],i['company'],i['market-cap'],i['sector'],i['ipo-date'],i['date']))
 
 print ("========================================================")
 
