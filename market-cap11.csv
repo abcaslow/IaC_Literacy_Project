@@ -1,0 +1,12 @@
+date,rank,company,symbol,market-cap,market-cap-float
+10-2-2020,1,apple,aapl,1.9 trillion,"1,900,000,000,000"
+10-2-2020,2,amazon,amzn,1.5 trillion,"1,500,000,000,000"
+10-2-2020,3,microsoft,msft,1.5 trillion,"1,500,000,000,000"
+10-2-2020,4,alphabet,goog,991 billion,"991,000,000,000"
+10-2-2020,5,alibaba,baba,779 billion,"779,000,000,000"
+10-2-2020,6,facebook,fb,740 billion,"740,000,000,000"
+10-2-2020,7,berkshire-Hathaway,brk.a,504 billion,"504,000,000,000"
+10-2-2020,8,visa,v,428 billion,"428,000,000,000"
+10-2-2020,9,taiwan semiconductor,tsm,419 billion,"419,000,000,000"
+10-2-2020,10,walmart,wmt,398 billion,"398,000,000,000"
+10-2-2020,11,tesla,tsla,388 billion,"388,000,000,000"
