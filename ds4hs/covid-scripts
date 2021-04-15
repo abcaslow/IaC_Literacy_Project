@@ -1,0 +1,3 @@
+covid-cases.py:top_ten = sorted_cases.take(np.arange(10))
+covid-cases.py:print('va_top10=va_cases.take(np.arange(10))')
+

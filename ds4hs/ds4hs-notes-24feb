@@ -1,0 +1,11 @@
+https://www.inferentialthinking.com/data/sat2014.csv
+https://www.inferentialthinking.com/data/ckd.csv
+
+Notes files have hyphens.
+Data sets have underscores.
+
+ls -l | grep -v csv | grep -v py
+grep -A 3 COOL *
+
+Police_Use_of_Force.csv is a great daraset. It has 30 columns 
+It is used to generate a great heatmap in Week4 of BUDS 

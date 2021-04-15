@@ -1,0 +1,25 @@
+list(y)
+dict(y)
+y['Registration']
+for i in y['Registration']: print (i)
+for i in y['Registration']: 
+    if i.startswith('Palo'):
+        print (i)
+for i in y['Registration']: 
+    if i.startswith('M'):
+        print (i)
+for i in y['Registration']: 
+    if i.startswith('S'):
+        print (i)
+history
+In [14]: type(y)
+Out[14]: datascience.tables.Table
+
+In [15]: type(y['Registration'])
+Out[15]: numpy.ndarray
+
+In [16]: type(y['count'])
+Out[16]: numpy.ndarray
+
+
+

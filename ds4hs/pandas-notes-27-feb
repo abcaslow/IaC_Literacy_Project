@@ -1,0 +1,79 @@
+import pandas as pd
+df=pd.read_csv('arpSearchResults.csv')
+type(df['Seen From'])
+df['Seen From']=pd.to_datetime(df['Seen From'])
+type(df['Seen From'])
+type(df['Seen From'][0])
+type(df['Seen To'][0])
+df['Seen To']=pd.to_datetime(df['Seen To'])
+type(df['Seen To'][0])
+type(df['Seen From'][0])
+diff=df['Seen From'][0]-df['Seen To'][0]
+diff
+
+=======================
+
+for i in df: print(['MAC'])
+df2=pd.read_csv('arp-delta.csv')
+df2
+df2['Seen From']=pd.to_datetime(df2['Seen From'])
+df2['Seen To']=pd.to_datetime(df2['Seen To'])
+df2['Seen To']
+diff2=df2['Seen From'][0]-df2['Seen To'][0]
+diff2
+df2.unique()
+df2['Seen From'].unique()
+df2['Registration'].unique()
+df2['Registration'].value_counts()
+
+=======================
+
+magic1=pd.read_json('arp4pandas.json')
+magic1
+magic1.columns
+magic1['seenFrom']=pd.to_datetime(magic1['seenFrom'])
+magic1['seenTo']=pd.to_datetime(magic1['seenTo'])
+magic1.columns
+magicdiff=magic1['seenFrom'][0]-magic1['seenTo'][0]
+magicdiff
+magicdiff=magic1['seenFrom'][1]-magic1['seenTo'][1]
+magicdiff
+magic1[0]
+magic1.iloc[0]
+magic1.iloc[0]
+for i in magic1.iloc: print (i)
+for i in magic1.iloc: print (i['registration'])
+for i in magic1.iloc: print (i['seenFrom'], "    ", i['seenTo'])
+
+======================
+
+from datetime import datetime
+now=datetime.now()
+now
+now - datetime(1999, 7, 15, 0, 0, 0, 0)
+now.days
+now - datetime(1999, 7, 15)
+now
+delta=now - datetime(1999, 7, 15)
+delta
+delta.days
+7898/365
+
+======================
+magic1
+magic1['seenTo']
+tage=magic1['seenTo']
+tage
+tage.index
+x=tage.index
+x
+pd.Series(magic1['seenTo'], index=dates)
+ts=pd.Series(magic1['seenTo'], index=magic)
+ts
+for i in magic1.iloc: print (i)
+ts['2020']
+longer.ts['2020']
+
+magic.columns
+magic.values
+magic.shape

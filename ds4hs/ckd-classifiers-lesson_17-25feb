@@ -1,0 +1,135 @@
+## From Lessons 17.1 and 17.2 on Classifiers with a chronic kidney disease example.
+
+ckd = rawdata.relabeled('Blood Glucose Random', 'Glucose')
+ckd.labels
+
+def standard_units(x):
+    return (x-np.mean(x))/np.mean(x)
+
+ckd = Table().with_columns(
+    'Hemoglobin', standard_units(ckd.column('Hemoglobin')),
+    'Glucose', standard_units(ckd.column('Glucose')),
+    'White Blood Cell Count', standard_units(ckd.column('White Blood Cell Count')),
+    'Class', ckd.column('Class')
+)
+color_table = Table().with_columns(
+    'Class', make_array(1, 0),
+    'Color', make_array('darkblue', 'gold')
+)
+
+ckd = ckd.join('Class', color_table)
+
+# Shows the first scatter plot with blue spread out and gold clustered.
+
+%matplotlib
+ckd.scatter('Hemoglobin', 'Glucose', group='Color')
+
+#The following are  hidden functions from the Inferential Thinking e-textbook
+#I had to open this page in Binder and the following hidden functions appeared:
+
+def distance(point1, point2):
+    """The distance between two arrays of numbers."""
+    return np.sqrt(np.sum((point1 - point2)**2))
+
+def all_distances(training, point):
+    """The distance between p (an array of numbers) and the numbers in row i of attribute_table."""
+    attributes = training.drop('Class')
+    def distance_from_point(row):
+        return distance(point, np.array(row))
+    return attributes.apply(distance_from_point)
+
+def table_with_distances(training, point):
+    """A copy of the training table with the distance from each row to array p."""
+    return training.with_column('Distance', all_distances(training, point))
+
+def closest(training, point, k):
+    """A table containing the k closest rows in the training table to array p."""
+    with_dists = table_with_distances(training, point)
+    sorted_by_distance = with_dists.sort('Distance')
+    topk = sorted_by_distance.take(np.arange(k))
+    return topk
+
+# Now, I ran the following function displayed and copied from the Inferential Thinking e-textbook
+
+def show_closest(point):
+    """point = array([x,y]) 
+    gives the coordinates of a new point
+    shown in red"""
+    
+    HemoGl = ckd.drop('White Blood Cell Count', 'Color')
+    t = closest(HemoGl, point, 1)
+    x_closest = t.row(0).item(1)
+    y_closest = t.row(0).item(2)
+    ckd.scatter('Hemoglobin', 'Glucose', group='Color')
+    plt.scatter(point.item(0), point.item(1), color='red', s=30)
+    plt.plot(make_array(point.item(0), x_closest), make_array(point.item(1), y_closest), color='k', lw=2);
+# WHY A ; AT THE END OF THE LINE ABOVE? I HAVE NEVER SEEN A ; IN PYTHON BEFORE!
+
+alice = make_array(0, 1.5)
+
+show_closest(alice)
+
+# This second graph produced a very cool red dot showing Alice with a line to her nearest neighbor.
+
+ckd.scatter('White Blood Cell Count', 'Glucose', group='Color')
+
+#New Topic
+
+shuffled_ckd = ckd.sample(with_replacement=False)
+
+training = shuffled_ckd.take(np.arange(79))
+
+testing = shuffled_ckd.take(np.arange(79, 158))
+
+training.scatter('White Blood Cell Count', 'Glucose', group='Color')
+
+plt.xlim(-2, 6)
+plt.ylim(-2, 6);
+
+ckd.row(0)
+
+ckd.row(0).item(3)
+
+##### The next block of code is the same code from the beginning of 17.1 with a minor variation of columns in standard units.
+ckd = Table().with_columns(
+    'Hemoglobin', standard_units(ckd.column('Hemoglobin')),
+    'Glucose', standard_units(ckd.column('Glucose')),
+    'Class', ckd.column('Class')
+)
+
+color_table = Table().with_columns(
+    'Class', make_array(1, 0),
+    'Color', make_array('darkblue', 'gold')
+)
+##### End duplicate code.
+
+ckd = ckd.join('Class', color_table)
+
+alice = make_array(0, 1.1)
+
+ckd.scatter('Hemoglobin', 'Glucose', group='Color')
+
+plots.scatter(alice.item(0), alice.item(1), color='red', s=30);
+
+def distance(point1, point2):
+    """Returns the Euclidean distance between point1 and point2.
+    
+    Each argument is an array containing the coordinates of a point."""
+    return np.sqrt(np.sum((point1 - point2)**2))
+
+distance(alice, patient3)
+
+patient3 = np.array(ckd_attributes.row(3))
+
+ckd_attributes.row(3)
+
+ckd_attributes = ckd.select('Hemoglobin', 'Glucose')
+
+ckd_attributes.row(3)
+
+patient3 = np.array(ckd_attributes.row(3))
+
+alice, patient3
+
+distance(alice, patient3)
+

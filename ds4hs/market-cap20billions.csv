@@ -1,0 +1,21 @@
+rank,date,company,sector,symbol,market-cap,ipo-date,data-source
+1,10/6/2020,Apple (G-MAFIA),tech,aapl,1961,1980,
+2,10/6/2020,Microsoft (G-MAFIA),tech,msft,1558,1986,
+3,10/6/2020,Amazon (G-MAFIA),tech/retail,amzn,1552,1997,
+4,10/6/2020,Alphabet  (G-MAFIA),tech,goog,987,2004,
+5,10/6/2020,Facebook (G-MAFIA),tech,fb,736,2012,
+6,10/6/2020,Berkshire Hathaway,conglomorate,brk.a,501,,
+7,10/6/2020,VISA,finance,v,426,2008,fool.com
+8,10/6/2020,Walmart,retail,wmt,398,1972,
+9,10/6/2020,Tesla,tech/auto,tsla,385,2010,bloomberg.com
+10,10/6/2020,Johnson & Johnson,consumer,jnj,385,1944,
+11,10/6/2020,Proctor & Gamble,consumer,pg,347,,
+12,10/6/2020,NVIDA,tech,nvda,339,1999,
+13,10/6/2020,Mastercard,finance,ma,337,2006,
+14,10/6/2020,United Health,health,unh,298,,
+15,10/6/2020,JP Morgan,finance,jpm,298,,
+16,10/6/2020,Home Depot,retail,hd,297,1981,
+17,10/6/2020,Verizon,telco,vz,246,,
+18,10/6/2020,Adobe,tech,adbe,229,1986,
+19,10/6/2020,Salesforce,tech,crm,227,2004,
+20,10/6/2020,Paypal,fintech,pypl,224,2002,

@@ -1,0 +1,91 @@
+y['Registration'].dtype.str
+y['Registration'].dtype.type
+y['Registration'].dtype.itemsize
+156/8
+y['Registration']
+
+list(y['Registration'])
+map(len, list(y['Registration']))
+list(map(len, list(y['Registration'])))
+max(list(map(len, list(y['Registration']))))
+max
+sum
+
+sum(list(map(len, list(y['Registration']))))
+sum(map(len, list(y['Registration'])))
+map(len, list(y['Registration']))
+map(len, y['Registration'])
+list(map(len, y['Registration']))
+sum(map(len, y['Registration']))
+list(map(len, y['Registration']))
+
+dict(y)
+dict(y).keys()
+dict(y).values()
+dict(y).items()
+for i in dict(y).items(): print (i)
+y.rows
+
+cam
+cam.rows
+
+dir()
+cam_q.rows
+dict(cam_q)
+
+rpsort=arpreport.sort('count', descending=True)
+arpfeb8_clean.group('Vendor')
+yyy=arpfeb8_clean.group('Vendor')
+#sum(map(len,yyy['count'])) <= does not work. This is for strings.
+yyy
+yyy['count']
+sum(yyy['count'])
+yyy['count'].dtype
+min(yyy['count'])
+max(yyy['count'])
+len(yyy['count'])
+min(yyy['count'])
+yyy['count']
+yyy['count'][0]
+yyy['count'][-1]
+type(yyy['count'])
+yyy['count'].shape
+yyy['count'].dtype
+yyy['count'].dtype.fields
+yyy['count'].dtype.str
+yyy['count'].dtype.type
+yyy['Vendor'].dtype.type
+yyy['Vendor'].dtype.dtype
+yyy['Vendor'].dtype
+yyy['Vendor'].shape
+yyy['count'].dtype.str
+yyy['Vendor'].dtype.dtype
+yyy['Vendor'].dtype
+history
+
+list(y)
+dict(y)
+y['Registration']
+for i in y['Registration']: print (i)
+for i in y['Registration']: 
+    if i.startswith('Palo'):
+        print (i)
+for i in y['Registration']: 
+    if i.startswith('M'):
+        print (i)
+for i in y['Registration']: 
+    if i.startswith('S'):
+        print (i)
+history
+In [14]: type(y)
+Out[14]: datascience.tables.Table
+
+In [15]: type(y['Registration'])
+Out[15]: numpy.ndarray
+
+In [16]: type(y['count'])
+Out[16]: numpy.ndarray
+
+
+
+
