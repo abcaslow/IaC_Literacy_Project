@@ -1,0 +1,22 @@
+color_table = Table().with_columns(
+    'Class', make_array(1, 0),
+    'Color', make_array('darkblue', 'gold')
+)
+
+banknotes = rawdata.join('Class', color_table)
+
+%matplotlib
+
+banknotes.scatter('WaveletVar', 'WaveletCurt', group='Color')
+
+banknotes.scatter('WaveletSkew', 'Entropy', group='Color')
+
+ax = plt.figure(figsize=(8,8)).add_subplot(111, projection='3d')
+
+ax.scatter(banknotes.column('WaveletSkew'), 
+           banknotes.column('WaveletVar'), 
+           banknotes.column('WaveletCurt'), 
+           c=banknotes.column('Color'));
+
+
+

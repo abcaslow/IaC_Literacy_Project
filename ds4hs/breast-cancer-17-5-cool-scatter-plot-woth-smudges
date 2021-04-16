@@ -1,0 +1,28 @@
+#Thank you Brittany Wnngwer Duke 2017 grad
+#https://giving.duke.edu/article/decoding-cancer-brittany-wenger-17
+
+patients=rawdata.drop('ID')
+
+color_table = Table().with_columns(
+    'Class', make_array(1, 0),
+    'Color', make_array('darkblue', 'gold')
+)
+
+patients_with_colors = patients.join('Class', color_table)
+
+%matplotlib
+
+patients_with_colors.scatter('Bland Chromatin', 'Single Epithelial Cell Size', group='Color')
+
+COOL GRAPH
+def randomize_column(a):
+    return a + np.random.normal(0.0, 0.09, size=len(a))
+
+Table().with_columns(
+        'Bland Chromatin (jittered)', 
+        randomize_column(patients.column('Bland Chromatin')),
+        'Single Epithelial Cell Size (jittered)', 
+        randomize_column(patients.column('Single Epithelial Cell Size')),
+        'Class', patients.column('Class')
+    ).join('Class', color_table).scatter(1, 2, group='Color')
+

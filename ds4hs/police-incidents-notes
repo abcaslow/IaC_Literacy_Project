@@ -1,0 +1,44 @@
+#COOL PIVOT TABLE
+rawdata.select('offense','precinct').where('offense', are.containing("B")).pivot('offense','precinct')
+
+def convert_to_weekday(x):
+    return datetime.datetime.strptime(x, '%Y-%m-%dT%H:%M:%S.000Z').weekday()
+
+incidents=rawdata
+ 
+weekdays = [convert_to_weekday(incidents['beginDate'][i]) for i in range(len(incidents.column('beginDate')))]
+days = {0:'Monday', 1:'Tuesday', 2:'Wednesday', \
+                        3:'Thursday', 4:'Friday', 5:'Saturday', 6:'Sunday'}
+weekdays = [days[i] for i in weekdays]
+hour = incidents['beginTime']//100
+
+incidents = incidents.with_columns('weekday', weekdays, 'hour', hour)
+incidents.show(5)
+
+#COOL PIVOT TABLE - First group - look how group used [ ] 
+#NOTE: It appears this [] group technique is deprecated: 
+#Creating an ndarray from ragged nested sequences 
+#(which is a list-or-tuple of lists-or-tuples-or ndarrays with different lengths or shapes) is deprecated. 
+hour_weekday_matrix = incidents.group(['weekday', 'hour'])
+#COOL PIVOT TABLE - After group, pivot!
+hour_weekday_matrix = hour_weekday_matrix.pivot('hour', 'weekday', 'count', sum)
+hour_weekday_matrix
+
+import pandas as pd
+
+weekday_order = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday']
+#Note the use of PANDAS day of week functions below - note the 'df' BUT!!! where is the pd for pandas? All I see is 'df'!
+hour_weekday_matrix_df = hour_weekday_matrix.to_df()
+hour_weekday_matrix_df = hour_weekday_matrix_df.set_index('weekday').reindex(weekday_order)
+
+%matplotlib inline
+import seaborn as sns
+
+#PASTE ALL THREE OF THE FOLLOWING COMMANDS INTO A SINGLE iPYTHON CELL
+
+fig, ax = plt.subplots(1, figsize=(20, 8))
+sns.heatmap(hour_weekday_matrix_df, cmap='BuPu')
+ax.set_title('Incident Time and Weekday, 2019',\
+            fontdict={'fontsize': '15', 'fontweight' : '3'});
+
+#COOL GRAPH! AMAZING HEAT MAP!! Adjust the top and bottom borders to eliminate over lap of Y-axis day of week names

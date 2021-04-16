@@ -1,0 +1,54 @@
+arp=pd.read_json('arp-total-pandas.json')
+arp
+arp.groupby['vrf']
+arpbyvrf=arp.groupby('vrf')
+arpbyvrf.count
+print(arpbyvrf.count)
+arpbyvrf.head
+arpbyvrf.tail
+arpbyvrf.tail()
+arpbyvrf.count()
+arpbyvrf.sort.count()
+arpbyvrf.sort('vrf').count()
+arpbyvrf.sort().count()
+arpbyvrf=arp.groupby('vrf').agg({'Registration':['count']})
+arp.columns
+arp.values
+This worked:
+arpbyvrf=arp.groupby(['vrf','registration']).agg({'registration':['count']})
+arpbyvrf
+print(arpbyvrf)
+pandas.set_option('display.max_rows')
+pd.set_option('display.max_rows', arp.shape[0]+1)
+arpbyvrf
+
+arpbyvrf=arp.groupby(['vrf','registration']).agg({'registration':['count']})
+arp.groupby(['vrf','registration']).agg({'registration':['count']})
+vendorbyvrf=arp.groupby(['vrf','registration']).agg({'registration':['count']})
+
+vendorbyvrf.sort_index(2)
+dir(vendorbyvrf)
+vendorbyvrf.value_counts
+dir(vendorbyvrf)
+vendorbyvrf=arp.groupby(['vrf','registration']).agg({'registration':['count']})
+vendorbyvrf
+vendorbyvrf.apply(pd.DataFrame.sort_values, 'count', ascending=False)
+dir(pd.DataFrame)
+vendorbyvrf.sort_values(by=['count'], inplace=True)
+vendorbyvrf.columns
+vendorbyvrf.sort_values(by=['registration'], inplace=True)
+arpbyvrf
+type(arpbyvrf)
+arpbyvrf= arpbyvrf.reset_index()
+countries_reviewed.sort_values(by='count')
+arpbyvrf.sort_values(by='count')
+arpbyvrf.colmunw
+arpbyvrf.colmuns
+arpbyvrf.colmuns
+arpbyvrf.columns
+arpbyvrf.sort_values(by='vrf')
+arpbyvrf.sort_values([by='vrf', 'registration'])
+arpbyvrf.sort_values(by='vrf')
+arpbyvrf.sort_index
+arpbyvrf.sort_values(by='vrf').sort_index
+

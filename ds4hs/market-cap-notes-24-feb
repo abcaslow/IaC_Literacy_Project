@@ -1,0 +1,14 @@
+sectors_count=rawdata.select('sector','market-cap').group('sector').sort('count', descending=True)
+sectors_total=rawdata.select('sector','market-cap').group('sector', np.sum).sort('market-cap sum', descending=True)
+sectors_avg=rawdata.select('sector','market-cap').group('sector', np.mean).sort('market-cap mean', descending=True)
+sectors_avg
+COOL GRAPH
+%matplotlib
+sectors_total.barh('sector')
+sectors_avg.barh('sector')
+
+tech = rawdata.where("sector", are.contained_in('tech'))
+tech
+techretail = rawdata.where("sector", are.contained_in('tech/retail'))
+techretail
+

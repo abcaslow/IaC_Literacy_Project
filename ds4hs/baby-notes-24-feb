@@ -1,0 +1,29 @@
+baby.csv is a great data set.
+It is used in the datascience module tutorial 
+http://data8.org/datascience/tutorial.html#an-example
+and in Data8
+https://www.inferentialthinking.com/chapters/12/1/AB_Testing.html
+
+irths=rawdata
+smoking_and_birthweight = births.select('Maternal Smoker', 'Birth Weight')
+smoking_and_birthweight
+smoking_and_birthweight.hist('Birth Weight', group = 'Maternal Smoker')
+%matplotlib
+
+COOL GRAPH
+smoking_and_birthweight.hist('Birth Weight', group = 'Maternal Smoker')
+means_table = smoking_and_birthweight.group('Maternal Smoker', np.average)
+means_table
+means_table = smoking_and_birthweight.group('Maternal Smoker')
+means_table
+history
+
+baby=rawdata
+smoker_and_wt = baby.select(['Maternal Smoker', 'Birth Weight'])
+
+COOL GRAPH
+smoker_and_wt.where('Maternal Smoker', 0).select('Birth Weight').hist()
+smoker_and_wt.where('Maternal Smoker', 1).select('Birth Weight').hist()
+
+========
+baby-notes-24-feb: means_table = smoking_and_birthweight.group('Maternal Smoker', np.average)

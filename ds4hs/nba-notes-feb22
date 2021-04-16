@@ -1,0 +1,33 @@
+nba2.where("TEAM", are.containing("D")).group('TEAM')
+nba2.where("TEAM", are.containing("D")).group('TEAM').pivot('TEAM',"POSITION")
+nba2.where("TEAM", are.containing("D")).pivot('TEAM',"POSITION")
+nba2.where("TEAM", are.containing("D")).pivot("POSITION",'TEAM')
+nba2.where("TEAM", are.containing("B")).pivot("POSITION",'TEAM')
+nba2.where("TEAM", are.containing("D")).group('TEAM').sort('count')
+nba2.where("TEAM", are.containing("B")).pivot("POSITION",'TEAM')
+nba2.where("TEAM", are.containing("B")).pivot("POSITION",'TEAM').sort('C')
+nba2.where("TEAM", are.containing("B")).pivot("POSITION",'TEAM').sort('C', descending=True)
+
+%matplotlib
+
+CRAZY GRAPH - ALL PLAYERS
+rawdata.select('PLAYER','2015-2016 SALARY').sort('2015-2016 SALARY', descending=True).barh('PLAYER')
+rawdata
+rawdata.relabel('2015-2016 SALARY', 'SALARY')
+COOL GRAPH Top 10 Players
+rawdata.select('PLAYER','SALARY').sort('SALARY', descending=True).take[0:11].barh('PLAYER')
+
+groups-week-3.py:#I don't know what the following command does: nba_10 = nba1.take(np.arange(10))
+groups-week-3.py:nba_10 = nba1.take(np.arange(10))
+groups-week-3.py:positions_and_money.group('POSITION', np.mean)
+groups-week-3.py:nba.group('POSITION', np.mean) ## RUN THIS CELL
+
+COOL GRAPH - NBA team salary total and avverage
+nbamoney=rawdata.relabeled('2015-2016 SALARY','SALARY').select('TEAM','SALARY').group('TEAM', np.sum).sort('SALARY sum', descending=True)
+%matplotlib
+nbamoney.take[0:11].barh('TEAM')
+
+nbamoney_avg=rawdata.relabeled('2015-2016 SALARY','SALARY').select('TEAM','SALARY').group('TEAM', np.mean).sort('SALARY mean', descending=True)
+nbamoney_avg.take[0:11].barh('TEAM')
+
+do the same graph for marketcap50: total market cap per sector, avg market cap per sector
