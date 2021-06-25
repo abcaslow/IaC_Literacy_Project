@@ -1,0 +1,65 @@
+Comparing Two Apple Watch Logs Measuring Step Counts for Mom and Dad
+
+This exercise will use two csv files:
+    
+hrabc21june=Table.read_table('./data/steps-abc-21-june.csv')
+
+/data/steps-abc-21-june.csv
+
+Both files are read into their respective datascience.tables.Table Python instance of a Python Class using the names;
+
+stepslfc21june       with 51000+ rows of data
+stepsabc21june     with 92000+ rows of data
+
+You notice that stepslfc21june has some single outlier extremely high step readings. You perform the followng analysis where you start with readings greater than 10,000 and then you step down to 1,200 and you find the following 8 step readings out of a total of 92,000+ readings:
+    
+stepslfc21june[1][stepslfc21june[1]>10000]
+stepslfc21june[1][stepslfc21june[1]>5000]
+stepslfc21june[1][stepslfc21june[1]>2000]
+stepslfc21june[1][stepslfc21june[1]>1500]
+
+stepslfc21june[1][stepslfc21june[1]>1200]
+array([ 2032, 16562, 17121,  7074, 21179,  2845,  3378,  1301])
+
+When you perform the following calculation, you get the following very,very small value:
+    
+len(stepslfc21june[1][stepslfc21june[1]>1200])/len(stepslfc21june[1])
+
+8.68008463082515e-05
+
+grep where *
+grep where *-text
+grep where*are  *-text
+grep "where*are"  *-text
+grep "where.*are"  *-text
+
+stepslfc21june.where('steps', are.between_or_equal_to(3000, 25000))
+#t.where('Waists', are.not_above(38))
+
+stepslfc21junefiltered=stepslfc21june.where('steps', are.not_above(3000))
+
+http://data8.org/datascience/predicates.html?highlight=where
+
+=================
+
+gdata=stepslfc21junefiltered
+n_samples = len(gdata[0])+1
+index = np.arange(n_samples)
+x = np.arange(1, n_samples) #adjust this to the # of heartrate samples
+y = gdata[1]
+plt.title("LANIA: Start:{}  End:{}".format(gdata[0][0].replace('-0400',''),gdata[0][-1].replace('-0400','')))
+#plt.xticks(index, rotation=45)
+plt.xlabel("Mean:{:.2f}  Median:{:.2f}  StdDev:{:.2f} TotSamples:{}".format(np.mean(gdata[1]), np.median(gdata[1]),np.std(gdata[1]),len(gdata[0])))
+plt.ylabel("Heartrate bpm")
+plt.plot(x, y, color ="green")
+plt.grid()
+plt.show()
+
+==================
+
+abc: lots of 500 and lots above 1000 and 1250
+lania: lots of 400 not much above 1000
+
+==================
+bbb-shared-notes --get --text > ds4hs-comparing-apple-watch-steps-june-24-2pm-text
+

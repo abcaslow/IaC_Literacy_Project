@@ -1,0 +1,124 @@
+How to Locate and Slice Out Specific Data using:
+    1. Native Python Techniques
+    2. Numpy
+    3. Berkeley datascience
+    4. pandas
+
+Built-in Python String Methods
+
+'catcx'.find('at')  True=starting idx#; False=-1 # -1 l
+'catcx'.startswith('c") True/False #pandas loc uses this method
+
+'catcx.endswith('x') True/False #pandas loc uses this method
+Example: data.loc[data['email'].str.endswith("hotmail.com")] 
+
+Source: https://www.shanelynn.ie/pandas-iloc-loc-select-rows-and-columns-dataframe/
+
+Built-in Python List Methods
+
+xyz.count('chimp') 
+
+Booltest=['Baltimore', 'London', 'Paris', 'Boston']
+use: and, or, and not, or not
+
+for i in Booltest:
+    if i.startswith('B') and not i.endswith('on'):
+       print (i)
+
+Numpy Array Slicing
+
+hr[hr>100]
+
+The Numpy Cryptic Find and Where Combination
+
+npresult= np.char.find(fraxnpstr, '2019-06-08 1') #note 'find'
+result = np.where(npresult == 0)  #note the use of 'where'
+fraxnpstr[result] #W-O-W!!!! Feed in an array to an array!!! 
+
+While these steps may seem cryptic, you will see an application for them in the following Berkeley/Numpy combinations
+
+Berkeley/Numpy Combinations
+
+for i in range(30,110,10): print(i,len(bdf[1][bdf[1]<i]))
+for i in range(100,210,10): print(i,len(bdf[1][bdf[1]>i]))
+
+Running Numpy from a Berkeley datascience Table
+This analysis method is useful before using the Berekeley where/are techniques. If you get output with Berk/numpy, goto berk/where
+
+hrabc[1][hrabc[1]>100]
+
+A more advanced Boolean "AND" example with np.where:
+    
+x11=(hrabc[1]>100) & (hrabc[1]<150)
+x11result= np.where(x11==True)  #note the use of "where"
+hrabc[1][x11result]
+
+Berkeley Where/are Techniques
+BDS #For help, use "?Table.take" or "?Table.where"
+
+bdf.where('hr', are.between_or_equal_to(82, 200))
+t.where('Sizes', are.containing('L'))
+t.where('Sizes', are.not_containing('L'))
+t.where('Sizes', are.contained_in('MXL'))  #LOGICAL OR!!!!!
+Sizes | Waists
+t.where('Sizes', are.contained_in('L'))
+t.where('Sizes', are.not_contained_in('MXL')) #LOGICAL OR!!!!!
+
+
+pandas iloc/loc Techniques
+Notice that pandas uses the same Boolean & as numpy
+
+PDS - the iloc & loc methods/For help: "?df.iloc" or "?df.loc"
+df.iloc[:10]
+df.iloc[:10, 3:6] #like bds take but can specify columns as well
+ #MUST DO THIS FOR loc
+df.loc[['Apple','Facebook']] #Note the use of double brackets!
+df.loc[(df['market-cap'] > 70) & (df['sector'] == 'retail')]
+
+Remember: convert a pandas column to a numpy array with:
+    demomrktcap=demodf['market-cap'].to_numpy()
+
+Another Useful pandas Technique
+Notice pandas uses 'contains' like the Berkeley 'where' method
+
+temp1=dflania[dflania['timestamp'].str.contains('2019-06-09 1')]
+
+https://stackoverflow.com/questions/11350770/select-by-partial-string-from-a-pandas-dataframe
+
+A Crypytic but Educationally Useful pandas Technique
+
+dftslania=dflania['timestamp'].str[:19]
+#dflania['timestamp'].str[:19] #yr-mo-date hr-min-sec
+
+srslaniahr=dflania['heartrate']
+dffrax=pd.concat([dftslania,srslaniahr], axis=1)
+dftsfrax1 = dffrax.set_index('timestamp')
+dftsfrax1['2019-06-08 14:21:11' :'2019-06-08 14:56:23']
+dftsfrax1.iloc[1000:1010]
+
+Renaming Columns in pandas
+for a pandas column in a dataframe:
+dflaniaidx1 = dflaniaidx.rename(columns={'timestamp': 'dateidx'})
+for the one and only one column in a pandas series
+dflaniaidx1 = dflaniaidx.rename('dateidx')
+
+A Useful pandas Statistical Summary method
+df.describe()
+
+BDS to PDS
+bdf.to_df()
+bdf.from_df(df-name)
+
+When Mongo Crashes and stops shared-notes operations
+bbb-conf --status
+systemctl status mongod
+bbb-conf --stop
+bbb-conf--start
+bbb-get-meetings
+
+bbb-shared-notes --get --text > ds4hs-survey-all-extraction-techniques-june-22-4pm-text
+
+
+
+
+

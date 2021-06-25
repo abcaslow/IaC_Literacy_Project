@@ -1,0 +1,118 @@
+Moving Data Between the Following Four Data Scibdf tence Environments
+    1. Native Python 
+    2. numpy
+    3. Berkeley datascience
+    4. pandas
+
+Start with two Python Strings
+
+state=('ny, va, md, ca')
+statepop=('19.95, 8.5, 6,39. 5')
+
+Convert These Two Strings into Python Lists
+
+statelist
+statepoplist
+
+Convert statepoplist from a list of strings to a list of floats with the name:
+    
+statepoplistf= list(map(float,statepoplist) 
+
+The map function produces a "generator".
+
+OR perform the following two step list of strings to floats conversion:
+    
+statepoplistf = []
+for i in statepoplist: statepoplistf.append(float(i))
+
+Remember to ask, is it a list of strings, a list of integers, a list of floats, etc.
+
+Python Data Type/Data Structure Verification 
+type(statelist)
+type(statepoplist)
+
+REMEMBER: Python is an object oriented programming language. Every Python object is associated with a Python Type and Python Types have attributes. One key attribute is the Type methods.
+
+From a Python List to a Numpy Array
+
+import numpy as np 
+
+statearray=np.array(statelist)
+statepoparray=np.array(statepoplistf)
+
+type(statearray)
+type(statepoparray)
+
+From a numpy Array to a Python List
+
+statearray.tolist()
+
+From numpy to Berkeley datascience
+
+from datascience import Table
+
+bdf=Table().with_columns('state',statearray,'population',statepoparray)
+
+type(bdf)
+
+From Berkeley datascience to numpy
+
+bdf.column('state') 
+
+bdf[x] # where x is the numpy array you are separating from the bdf table
+ipython
+
+From Berkeley datascience to a Python Dictionary of numpy Arrays
+
+dict(bdf)
+
+From numpy to pandas
+
+import pandas as pd
+
+df=pd.DataFrame({'state':statearray,'population':statepoparray})
+type(df)
+Carefully inspect the difference between:
+    type(bdf) and type(df)
+    
+From pandas to numpy... one column at a time
+
+statearray2=df['state'].to_numpy()
+type(statearray2)
+
+BDS to PDS
+bdf2df=bdf.to_df()
+bdf.from_df(df-name)
+
+Once again, carefully inspect the difference between:
+    type(bdf) and type(df)
+
+
+Add a numpy Array to a bdf or df
+
+Create the numpy array with state size in square miles:
+
+statesizearray=np.array(['54,556','42,775','12,407','163,696'])
+
+Append the new numpy array to the Berkeley dataframe/table
+bdf.with_column('area',statesizearray)
+bdf.with_columns('area',statesizearray)
+
+Append the new numpy array to the pandas dataframe
+
+df['area']=statesizearray.tolist()
+
+https://www.statology.org/add-numpy-array-to-pandas-dataframe/
+
+=========================
+bbb-shared-notes --get --text > ds4hs-moving-between-envs-june-24-text
+
+
+
+
+
+
+
+
+
+

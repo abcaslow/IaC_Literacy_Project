@@ -1,0 +1,87 @@
+Extracting Applewatch Data from XML
+
+Pre-Python Steps
+(1) On the iPhone, click on AppleHealth, click on the blueman icon in the upperight corner, scroll down and export health data.  Apple will name the file:
+    
+export.zip
+
+(2) unzip -v 'export (1).zip'    #This allows to look inside of an apple health zip file.
+
+(3) mv apple_health_export apple_health_export_abc_20_june  #rename a prexisting apple_health_export directory
+
+(4) unzip 'export (1).zip'  #unzip the xml file into a new apple_health_export directory
+
+Python Steps
+
+from lxml import etree
+with open('export.xml') as f:
+    xml = etree.fromstring(f.read().encode())
+
+# xml #optional shows you the root AppleHealth xml Element
+xml.getchildren()
+len(xml.getchildren()) # this will be in the 10's of thousands
+
+Query XML with XPath
+
+This will return XML Element Records:
+xml.xpath(".//Record[@sourceName='Orangetheory']")
+
+This will return a dictionary with all of the arrtibutes for each Element Record
+x=xml.xpath(".//Record[@sourceName='Orangetheory']")
+for i in x: print(i.attrib)
+
+x=xml.xpath(".//Record[@sourceName='Orangetheory']")
+for i in x: print(i.attrib)
+
+for i in x: print(i.attrib['sourceName'])
+for i in x: print(i.attrib)
+
+x=xml.xpath(".//Record[@type= 'HKQuantityTypeIdentifierActiveEnergyBurned']")
+x
+for i in x: print(i.attrib)
+len(x)
+
+x=xml.xpath(".//Record[@type= 'HKQuantityTypeIdentifierStepCount']")
+x
+for i in x: print(i.attrib)
+len(x)
+
+CSV Writer Step/Push XML data to csv file
+
+f = open('hr-21-june.csv', 'w')
+csv_writer=csv.writer(f)
+
+for child in xml.getchildren():
+     if child.attrib.get('type') == 'HKQuantityTypeIdentifierStepCount':
+        csv_writer.writerow([child.attrib['startDate'], int(child.attrib['value'])])
+f.close()
+
+Add Column Heading to New CSV File with LINUX Utility "sed"
+By default, there are no column headings on these newly created csv files. You can manually add them with a text editor like nano or you can programmatically add the column headings with the LINUX utility: sed
+
+ Insert Lines with sed by LINE NUMBER
+ sed 'ibwb' steps-lfc-21-june.csv | head
+ sed '0ibwb' steps-lfc-21-june.csv | head
+ sed '1ibwb' steps-lfc-21-june.csv | head
+ sed '1itimestamp,steps' steps-lfc-21-june.csv | head
+
+ Insert Lines with sed by LINE NUMBER AND SAVE TO FILE
+ sed -i '1itimestamp,steps' steps-lfc-21-june.csv | head
+ head steps-lfc-21-june.csv 
+ sed -i '1itimestamp1,steps' steps-lfc-21-june.csv | head
+ head steps-lfc-21-june.csv 
+ 
+ Deletes Lines with sed by LINE NUMBER
+ sed  '1d' steps-lfc-21-june.csv | head
+ sed  '1,2d' steps-lfc-21-june.csv | head
+ sed  '1d' steps-lfc-21-june.csv | head
+ 
+ Deletes Lines with sed by SEARCH CRITERIA 
+ sed  '/timestamp/d' steps-lfc-21-june.csv | head
+ 
+ Reference: ./Module1-DS4HS/data$ cat applewatch2csv-xml.py 
+
+============================
+bbb-shared-notes --get --text > ds4hs-xml-extraction-from-AppleHealth-text
+
+

@@ -1,0 +1,102 @@
+Analyzing an AppleWatch Heartrate Dataset
+
+Getting Started
+Open a Jupyter Lab Terminal.
+
+To Access the Correct BBB Shared Notes File from /scripts
+bbb-shared-notes --set  < ds4hs-berkeley-pandas-heartrate-june
+DO NOT REVERSE THE < to a >   THIS IS A  D-I-S-A-S-T-E-R! 
+jbs
+Make sure you are in IaC_Literacy_Project/Module1-DS4HS/scripts
+Enter: ipython3
+Remember to use  the <tab> key and the ? for help.
+
+Import the necessary Python Modules:
+    
+from datascience import *
+import numpy as np
+import pandas as pd 
+import matplotlib.pyplot as plt
+%matplotlib inline
+How to import  a csv data file into bds and pds
+bdf=Table.read_table('./data/heartrate-June.csv')
+df=pd.read_csv('./data/heartrate-June.csv')
+NOTE: There is a pandas read_csv (nrows=n) parameter.
+How inspect the data that is imported
+BDS
+bdf  #Only the first 10 rows will be displayed
+bdf.num_rows/bdf.num_columns/bdf.labels
+*bdf.shapehrlania
+bdf.dtype
+bdf.columns *very different than df.columns
+bdf.take[:10]  equal to df.head(10) but use numpy [:] notation
+bdf.take[-10:]  equal to df.tail(10) but use numpy [:] notation
+
+PDS
+df # All df rows will be displayed; use df.head(10) to see 1st 10 rows
+df.info()
+df.shape
+df.columns
+df.dtypes
+df.head  default - first 4 and the last 5.
+df.head(x)   where x is the top rows of the dataframe
+df.tail(x)   where x is the bottom rows of the dataframe
+
+Trim Characters from a pandas string (Ex: date/timestamp)
+
+dflania['timestamp'].str[:19] #yr-mo-date hr-min-sec
+
+How to Analyze Specific General Characteristics of the Data
+BDS
+for i in range(30,110,10): print(i,len(bdf[1][bdf[1]<i]))
+for i in range(100,210,10): print(i,len(bdf[1][bdf[1]>i]))
+PDS
+df.describe()
+
+How to select a subset of rows from a Table/Dataframe
+BDS #For help, use "?Table.take" or "?Table.where"
+bdf.take[x:y]  #This is a very flexible cmd for selecting rows.
+
+bdf.where('hr', are.between_or_equal_to(82, 200))
+t.where('Sizes', are.containing('L'))
+t.where('Sizes', are.not_containing('L'))
+t.where('Sizes', are.contained_in('MXL'))  #LOGICAL OR!!!!!
+Sizes | Waists
+t.where('Sizes', are.contained_in('L'))
+t.where('Sizes', are.not_contained_in('MXL')) #LOGICAL OR!!!!!
+
+PDS - the iloc & loc methods/For help: "?df.iloc" or "?df.loc"
+df.iloc[:10]
+df.iloc[:10, 3:6] #like bds take but can specify columns as well
+ #MUST DO THIS FOR loc
+df.loc[['Apple','Facebook']] #Note the use of double brackets!
+df.loc[(df['market-cap'] > 70) & (df['sector'] == 'retail')]
+
+BDS to PDS
+bdf.to_df()
+bdf.from_df(df-name)
+
+=================
+dftslania=dflania['timestamp'].str[:19]
+srslaniahr=dflania['heartrate']
+dffrax=pd.concat([dftslania,srslaniahr], axis=1)
+dftsfrax1 = dffrax.set_index('timestamp')
+dftsfrax1['2019-06-08 14:21:11' :'2019-06-08 14:56:23']
+dftsfrax1.iloc[1000:1010]
+
+temp1=dflania[dflania['timestamp'].str.contains('2019-06-09 1')]
+dflan
+
+https://stackoverflow.com/questions/11350770/select-by-partial-string-from-a-pandas-dataframe
+
+for a pandas column in a dataframe:
+dflaniaidx1 = dflaniaidx.rename(columns={'timestamp': 'dateidx'})
+for the one and only one column in a pandas series
+dflaniaidx1 = dflaniaidx.rename('dateidx')
+
+
+
+
+
+
+

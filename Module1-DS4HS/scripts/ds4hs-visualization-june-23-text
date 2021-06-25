@@ -1,0 +1,105 @@
+How to Visualize Data with numpy, Berkeley datascience and pandas
+
+import matplotlib.pyplot as plt
+%matplotlib inline
+
+numpy  "don't forget the [x] to specify the numpy array in your Berkeley Table.
+
+plt.hist(abc2june22[1], bins='auto') 
+plt.title("Histogram with 'auto' bins ENTER TEXT")
+plt.grid(True)
+plt.show()
+
+plt.hist(abc2.where('timestamp', are.containing('2021-06-22'))[1], bins='auto')
+plt.title("Histogram with 'auto' bins ENTER TEXT")
+plt.grid(True)
+plt.show()
+
+https://numpy.org/doc/stable/reference/generated/numpy.histogram.html
+
+To customize histogram bins, perform the following two commands:
+    np.min(abc2june22[1]) <= This will determine your lowest bin
+    np.max(abc2june22[1]) <= This will determine your highest bin
+    
+Also, you might want to calculate the mean, median and StdDev for the graph caption using the Python ' ' '  ' ' ' text object:
+
+plt.xlabel('''Total samples of this dataset appear at the top of the graph.
+
+Compute the mean, median, StdDev with np.mean, np.median, np.std''')
+
+Final numpy Histogram Plot
+plt.hist(abc2june22[1], bins=[40,50,60,70,80,90,100,140]) 
+plt.title("BRUCE: Start:{}  End:{}".format(np.char.replace(abc2june22[0][0], '-0400',''),np.char.replace (abc2june22[0][-1],'-0400','')))
+plt.xlabel("Mean:{:.2f}  Median:{:.2f}  StdDev:{:.2f} TotSamples:{}".format(np.mean(abc2june22[1]), np.median(abc2june22[1]),np.std(abc2june22[1]),len(abc2june22[0])))
+plt.grid(True)
+plt.show()
+
+Berkeley Simple Line Graph
+abc2.where('timestamp', are.containing('2021-06-21')).plot('timestamp')
+ 
+Berkeley Histogram
+
+abc2june22.select('heartrate').hist() 
+abc2june22.select('heartrate').hist(bins = range(40, 140,10))
+
+uneven = make_array(40, 44, 48, 50,52, 54, 56, 58, 60, 60,62,64, 66, 68, 70,75, 80, 90, 140)
+abc2june22.select('heartrate').hist(bins = uneven)
+
+NOTE: The Y-axis is NOT a frequency # number like numpy.hist
+The Y-Axis here is a percent per unit.
+ 
+When the 'normed=False' option is set, the Y-axis changes from % to actual count of samples. Try this statement out with 'normed=False':
+
+abc2j22.select('heartrate').hist(bins = range(40,140,10), normed=False)
+
+Remember to examine how normed=False changes the Y-Axis
+ 
+Notice how converting the heartrates from float to int seems to change the shape of the histogram BUT it really does not change it. Carefully, inspect the X-axis increments in this new histogram:
+     
+ abc2june22clean=abc2june22[1].astype(int)
+ abc2Table=Table().with_columns('heartrate',abc2june22clean)    
+ abc2Table.hist()
+ abc2Table.hist(bins = range(40, 140,10))
+ abc2Table.hist(bins = np.arange(40,140,10))
+ 
+Set uneven bins to cover the long tail of scattered high heart rates:
+uneven = make_array(40, 50, 60, 70,80, 90, 140)
+abc2Table.hist(bins = uneven)
+ 
+Getting a Table of Berkeley Histogram bin Counts
+
+bin_counts = abc2june22.bin('heartrate', bins=np.arange(40,140,10))
+bin_counts.show()
+ 
+Why does this histogram have two colors of bar charts:
+abc2Table.group('heartrate').hist()
+ 
+Great Example from data8 Tutorial:
+smoker_and_wt.where('Maternal Smoker', 1).select('Birth Weight').hist() 
+http://data8.org/datascience/tutorial.html#visualizing-data
+
+Other great examples with details are in Inferential Thinking Ch. 8:
+https://inferentialthinking.com/chapters/07/2/Visualizing_Numerical_Distributions.html
+ 
+When Mongo Crashes and stops shared-notes operations
+bbb-conf --status
+systemctl status mongod
+bbb-conf --stop
+bbb-conf--start
+bbb-get-meetings
+
+Reference
+
+https://inferentialthinking.com/chapters/11/3/Decisions_and_Uncertainty.html?highlight=hist
+
+https://towardsdatascience.com/basic-medical-data-exploration-visualization-heart-diseases-6ab12bc0a8b7
+
+==========================
+bbb-shared-notes --get --text > ds4hs-visualization-june-22-text
+
+bbb-shared-notes --get  > ds4hs-visualization-june-22-html
+
+
+
+
+

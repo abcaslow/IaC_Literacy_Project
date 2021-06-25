@@ -1,0 +1,16 @@
+grep where *
+grep where *-text
+grep where*are  *-text
+grep "where*are"  *-text
+grep "where.*are"  *-text
+
+stepslfc21june.where('steps', are.between_or_equal_to(3000, 25000))
+#t.where('Waists', are.not_above(38))
+
+stepslfc21junefiltered=stepslfc21june.where('steps', are.not_above(3000))
+
+http://data8.org/datascience/predicates.html?highlight=where
+
+==================
+bbb-shared-notes --get --text > ds4hs-comparing-apple-watch-steps-june-24-7am-text
+

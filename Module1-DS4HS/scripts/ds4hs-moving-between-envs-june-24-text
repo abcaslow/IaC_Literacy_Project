@@ -1,0 +1,91 @@
+Moving Data Between the Following Four Data Scibdf tence Environments
+    1. Native Python 
+    2. numpy
+    3. Berkeley datascience
+    4. pandas
+
+Start with two Python Strings
+
+state=('ny, va, md, ca')
+statepop=('19.95, 8.5, 6,39. 5')
+
+Convert These Two Strings into Python Lists
+
+statelist
+statepoplist
+
+Convert statepoplist from a list of strings to a list of floats with the name:
+    
+statepoplistf= list(map(float,statepoplist) 
+
+The map function produces a "generator".
+
+OR perform the following two step list of strings to floats conversion:
+    
+statepoplistf = []
+for i in statepoplist: statepoplistf.append(float(i))
+
+Remember to ask, is it a list of strings, a list of integers, a list of floats, etc.
+
+From a Python List to a Numpy Array
+
+import numpy as np 
+
+statearray=np.array(statelist)
+statepoparray=np.array(statepoplistf)
+
+From a numpy Array to a Python List
+
+statearray.tolist()
+
+From numpy to Berkeley datascience
+
+from datascience import Table
+
+bdf=Table().with_columns('state',statearray,'state population',statepoparray)
+
+From Berkeley datascience to numpy
+
+bdf.column('state') # # where x is the numpy array you are separating from the bdf table
+
+bdf[x] # where x is the numpy array you are separating from the bdf table
+ipython
+
+From Berkeley datascience to a Python Dictionary of numpy Arrays
+
+dict(bdf)
+
+From numpy to pandas
+
+import pandas as pd
+
+df=pd.DataFrame({'state':statearray,'state population':statepoparray})
+
+From pandas to numpy... one column at a time
+
+statearray2=df['state'].to_numpy()
+type(statearray2)
+
+BDS to PDS
+bdf.to_df()
+bdf.from_df(df-name)
+
+When Mongo Crashes and stops shared-notes operations
+bbb-conf --status
+systemctl status mongod
+bbb-conf --stop
+bbb-conf--start
+bbb-get-meetings
+
+=========================
+bbb-shared-notes --get --text > ds4hs-moving-between-envs-june-24-text
+
+
+
+
+
+
+
+
+
+
