@@ -1,0 +1,210 @@
+Standard Deviation shows you the spread of the data. It shows you how consistent data measurements are. Consider the following two data sets:
+    
+    50,50,50,50= mean (50), std=0
+    10,90,40,60= mean (50), std= 29.15475
+
+np.array_equal(x,y)
+
+Try out the np.allclose() method. VERY POWERFUL
+In [452]: z
+Out[452]: array([10, 90, 40, 60])
+
+In [453]: z1
+Out[453]: array([15, 90, 40, 60])
+
+In [454]: np.allclose(z,z1,atol=5.0)
+Out[454]: True
+
+atol=absolute tolerance
+
+In [455]: np.allclose(z,z1,atol=4.9)
+Out[455]: False
+
+https://towardsdatascience.com/12-amazing-pandas-numpy-functions-22e5671a45b8
+
+Finally, for an element by element comparision, use z==z1 without or without the .any and .all options.
+
+In [470]: z
+Out[470]: array([10, 90, 40, 60])
+
+In [471]: z1
+Out[471]: array([15, 90, 40, 60])
+
+Use the np.count_nonzero() method to count the number of True elements in an array:
+
+In [473]: z==z1
+Out[473]: array([False,  True,  True,  True])
+
+In [472]: np.count_nonzero(z==z1)
+Out[472]: 3
+
+https://www.kite.com/python/answers/how-to-count-the-number-of-true-elements-in-a-numpy-boolean-array-in-python
+
+Using Python and numpy to understand standard deviation.
+
+You need data to calculate an average/mean.
+You need data and a mean and a variance to calculate a standard deviation.
+
+The Standard Deviation is a measure of how spread out numbers are.
+Its symbol is σ (the greek letter sigma)
+The formula is easy: it is the square root of the Variance. 
+The average of the squared differences from the Mean.
+
+Source: https://www.mathsisfun.com/data/standard-deviation.html
+
+Remember to always start with calculating the mean first, then callculate the standard deviation.
+
+Degrees of Freedom
+
+When configuring the standard deviation ith numpy, remember the degrees of freedom option (ddof):
+
+np.std(n, ddof=1)
+
+Degrees of Freedom impacts the denominator of a variance or standard deviations. The denominator can be either n (a degree of freedom of 0) or n-1 (a degree of freedom of 1). 
+
+https://www.statsdirect.com/help/basics/degrees_of_freedom.htm
+https://onlinestatbook.com/2/estimation/df.html
+
+More on the Degrees of Freedom:
+    
+ Note in the example above that we are dividing by N, not N-1 as is usually seen in standard deviation calculations. When the standard deviation is computed using all values in the population, N is used as the divisor. However, when the standard deviation is calculated from a sample, N-1 is used as the divisor. We stress that the results for a sample by using the lower-case n and naming the sample standard deviation.......The n-1 is used instead of n to correct for bias that statisticians have discovered. That is, over the long run, dividing by n-1 provides a better estimate of the true standard deviation than does dividing by n. Although we divide by n-1 rather than n for sample standard deviations, we recommend that for purposes of interpretation, the divisor is assumed to be n, so that the operation can be thought of as computing an average.
+
+From Stack Exchange to reflect a histogram of rolling two dice (BEAUTIFUL!)
+   
+N = int(1e5)
+A = np.random.randint(low=1, high=7, size=N)
+B = np.random.randint(low=1, high=7, size=N)
+dice = A + B
+plt.hist(dice, bins=np.arange(2, 14), align="left", rwidth=0.9)
+plt.show()
+
+Source: https://stackoverflow.com/questions/55897323/plot-a-histogram-of-the-sum-of-rolling-two-die
+
+ 
+numbers=[100,100]*100
+numbers
+import numpy as np
+np.array(numbers)
+x=np.array(numbers)
+np.std(x)
+numbers=[100,102]*50
+x=np.array(numbers)
+x
+np.std(x)
+numbers=[100,101]*50
+x=np.array(numbers)
+x
+np.std(x)
+numbers=[99,100,101]*33
+x
+history
+x
+numbers=[99,100,101]*33
+numbers
+x=np.array(numbers)
+x
+np.std(x)
+history
+
+x=[1,1,1,1]+[2,2,2,2]+[3,3,3,3]+[4,4,4,4]
+na=np.array(n)
+np.mean(n)
+np.std(n)
+
+=========================
+
+In [289]: x=[99,100,101]*33
+[99,100,101,99,100,101,99,100,101.....99,100,101]
+In [294]: na=np.array(x)
+
+Two Summary Steps:
+
+In [295]: np.mean(x)
+Out[295]: 100.0
+
+In [296]: np.std(x)
+Out[296]: 0.816496580927726
+
+More Detailed Five Steps to Get to the Exact Same Answer:
+
+1. Subtract Each Data Point from the Mean to get the Following Array
+In [297]: x-np.mean(x)
+Out[297]: 
+array([-1.,  0.,  1., -1.,  0.,  1., -1.,  0.,  1., -1.,  0.,  1., -1.,
+        0.,  1., -1.,  0.,  1., -1.,  0.,  1., -1.,  0.,  1., -1.,  0.,
+        1., -1.,  0.,  1., -1.,  0.,  1., -1.,  0.,  1., -1.,  0.,  1.,
+       -1.,  0.,  1., -1.,  0.,  1., -1.,  0.,  1., -1.,  0.,  1., -1.,
+        0.,  1., -1.,  0.,  1., -1.,  0.,  1., -1.,  0.,  1., -1.,  0.,
+        1., -1.,  0.,  1., -1.,  0.,  1., -1.,  0.,  1., -1.,  0.,  1.,
+       -1.,  0.,  1., -1.,  0.,  1., -1.,  0.,  1., -1.,  0.,  1., -1.,
+        0.,  1., -1.,  0.,  1., -1.,  0.,  1.])
+
+2. Square These Differences from the Mean
+In [298]: (x-np.mean(x))**2
+Out[298]: 
+array([1., 0., 1., 1., 0., 1., 1., 0., 1., 1., 0., 1., 1., 0., 1., 1., 0.,
+       1., 1., 0., 1., 1., 0., 1., 1., 0., 1., 1., 0., 1., 1., 0., 1., 1.,
+       0., 1., 1., 0., 1., 1., 0., 1., 1., 0., 1., 1., 0., 1., 1., 0., 1.,
+       1., 0., 1., 1., 0., 1., 1., 0., 1., 1., 0., 1., 1., 0., 1., 1., 0.,
+       1., 1., 0., 1., 1., 0., 1., 1., 0., 1., 1., 0., 1., 1., 0., 1., 1.,
+       0., 1., 1., 0., 1., 1., 0., 1., 1., 0., 1., 1., 0., 1.])
+
+3. Sum Up the Square of the Differennces
+In [299]: np.sum((x-np.mean(x))**2)
+Out[299]: 66.0
+
+4. Take the Mean of the Sum of the Square of the Differences
+NOTE: We are not adjusting the Degree of Freedom by 1
+In [312]: np.sum((x-np.mean(x))**2)/len(x)
+Out[312]: 0.6666666666666666
+
+5. Calculate the Square Root of the Mean of the Sum of the Square of Differences
+In [311]: np.sqrt(np.sum((x-np.mean(x))**2)/len(x))
+Out[311]: 0.816496580927726
+
+A Larger Standard Deviation, the more spread out the numbers are.
+
+Experiment with changing just a few numbers in the data set:
+    
+x[0]=150
+x[0:10]
+np.std(x)
+
+x[0]= 99   <= RESET The Original Value of 99. If not, you will use the new #.
+In [362]: x[0]=99
+
+In [364]: x[0:10]   #x[0] is now RESET to its original value of 99.
+Out[364]: [99, 100, 101, 99, 100, 101, 99, 100, 101, 99]
+
+In [365]: x[0]=x[0]*1.2
+
+In [366]: x[0:10]   #x[0] is SET to a new value x[0]*1.2
+Out[366]: [118.8, 100, 101, 99, 100, 101, 99, 100, 101, 99]
+
+In [367]: np.std(x)
+Out[367]: 2.0461345670963746  #Notice how the std is increasing.
+
+
+Now view a graph of a histogram of the data spread with numpy or bds:
+
+bdfx=Table().with_columns("test",x)
+bdfx
+%matplotlib qt   <= This command enables popup windows in terminal iPython
+bdfx.hist()
+%matplotlib inline
+
+======================
+Relate this to the Empirical Rule and Chebyshev's Theorem:
+ 
+	* Chebyshev’s Theorem is a fact that applies to all possible data sets. It describes the minimum proportion of the measurements that lie must within one, two, or more standard deviations of the mean.
+   
+https://stats.libretexts.org/Bookshelves/Introductory_Statistics/Book%3A_Introductory_Statistics_(Shafer_and_Zhang)/02%3A_Descriptive_Statistics/2.05%3A_The_Empirical_Rule_and_Chebyshev's_Theorem
+    
+
+=======================
+https://www.mathsisfun.com/data/standard-deviation.html
+?%history
+%history -g -f test-ipython-history-log
+
+
+

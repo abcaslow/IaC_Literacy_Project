@@ -1,0 +1,98 @@
+Standard Deviation Part Two of Two
+
+
+In [289]: x=[99,100,101]*33
+[99,100,101,99,100,101,99,100,101.....99,100,101]
+In [294]: na=np.array(x)
+
+Two Summary Steps:
+
+In [295]: np.mean(x)
+Out[295]: 100.0
+
+In [296]: np.std(x)
+Out[296]: 0.816496580927726
+
+More Detailed Five Steps to Get to the Exact Same Answer:
+
+1. Subtract Each Data Point from the Mean to get the Following Array
+In [297]: x-np.mean(x)
+Out[297]: 
+array([-1.,  0.,  1., -1.,  0.,  1., -1.,  0.,  1., -1.,  0.,  1., -1.,
+        0.,  1., -1.,  0.,  1., -1.,  0.,  1., -1.,  0.,  1., -1.,  0.,
+        1., -1.,  0.,  1., -1.,  0.,  1., -1.,  0.,  1., -1.,  0.,  1.,
+       -1.,  0.,  1., -1.,  0.,  1., -1.,  0.,  1., -1.,  0.,  1., -1.,
+        0.,  1., -1.,  0.,  1., -1.,  0.,  1., -1.,  0.,  1., -1.,  0.,
+        1., -1.,  0.,  1., -1.,  0.,  1., -1.,  0.,  1., -1.,  0.,  1.,
+       -1.,  0.,  1., -1.,  0.,  1., -1.,  0.,  1., -1.,  0.,  1., -1.,
+        0.,  1., -1.,  0.,  1., -1.,  0.,  1.])
+
+2. Square These Differences from the Mean
+In [298]: (x-np.mean(x))**2
+Out[298]: 
+array([1., 0., 1., 1., 0., 1., 1., 0., 1., 1., 0., 1., 1., 0., 1., 1., 0.,
+       1., 1., 0., 1., 1., 0., 1., 1., 0., 1., 1., 0., 1., 1., 0., 1., 1.,
+       0., 1., 1., 0., 1., 1., 0., 1., 1., 0., 1., 1., 0., 1., 1., 0., 1.,
+       1., 0., 1., 1., 0., 1., 1., 0., 1., 1., 0., 1., 1., 0., 1., 1., 0.,
+       1., 1., 0., 1., 1., 0., 1., 1., 0., 1., 1., 0., 1., 1., 0., 1., 1.,
+       0., 1., 1., 0., 1., 1., 0., 1., 1., 0., 1., 1., 0., 1.])
+
+3. Sum Up the Square of the Differennces
+In [299]: np.sum((x-np.mean(x))**2)
+Out[299]: 66.0
+
+4. Take the Mean of the Sum of the Square of the Differences
+NOTE: We are not adjusting the Degree of Freedom by 1
+In [312]: np.sum((x-np.mean(x))**2)/len(x)
+Out[312]: 0.6666666666666666
+
+5. Calculate the Square Root of the Mean of the Sum of the Square of Differences
+In [311]: np.sqrt(np.sum((x-np.mean(x))**2)/len(x))
+Out[311]: 0.816496580927726
+
+A Larger Standard Deviation, the more spread out the numbers are.
+
+Experiment with changing just a few numbers in the data set:
+    
+x[0]=150
+x[0:10]
+np.std(x)
+
+x[0]= 99   <= RESET The Original Value of 99. If not, you will use the new #.
+In [362]: x[0]=99
+
+In [364]: x[0:10]   #x[0] is now RESET to its original value of 99.
+Out[364]: [99, 100, 101, 99, 100, 101, 99, 100, 101, 99]
+
+In [365]: x[0]=x[0]*1.2
+
+In [366]: x[0:10]   #x[0] is SET to a new value x[0]*1.2
+Out[366]: [118.8, 100, 101, 99, 100, 101, 99, 100, 101, 99]
+
+In [367]: np.std(x)
+Out[367]: 2.0461345670963746  #Notice how the std is increasing.
+
+
+Now view a graph of a histogram of the data spread with numpy or bds:
+
+bdfx=Table().with_columns("test",x)
+bdfx
+%matplotlib qt   <= This command enables popup windows in terminal iPython
+bdfx.hist()
+%matplotlib inline
+
+======================
+Relate this to the Empirical Rule and Chebyshev's Theorem:
+ 
+	* Chebyshev’s Theorem is a fact that applies to all possible data sets. It describes the minimum proportion of the measurements that lie must within one, two, or more standard deviations of the mean.
+   
+https://stats.libretexts.org/Bookshelves/Introductory_Statistics/Book%3A_Introductory_Statistics_(Shafer_and_Zhang)/02%3A_Descriptive_Statistics/2.05%3A_The_Empirical_Rule_and_Chebyshev's_Theorem
+    
+
+=======================
+https://www.mathsisfun.com/data/standard-deviation.html
+?%history
+%history -g -f test-ipython-history-log
+
+
+

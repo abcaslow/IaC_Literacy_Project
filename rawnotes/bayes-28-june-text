@@ -1,0 +1,21 @@
+Understanding Bayes
+
+Silver: p241: Bayes and Bob Volgaris
+
+https://inferentialthinking.com/chapters/18/1/More_Likely_than_Not_Binary_Classifier.html
+
+https://en.wikipedia.org/wiki/Ansatz
+
+https://machinelearningmastery.com/bayes-theorem-for-machine-learning/
+
+
+A good example of a Bayesian update is the realization that something is an optical illusion.
+For example, Nina had a Bayesian update when she thought she saw two lanterns in the distance but what she really saw was the reflection of her own lantern in a moose's eyes standing 10 feet away! 
+
+=======================
+https://www.mathsisfun.com/data/standard-deviation.html
+?%history
+%history -g -f test-ipython-history-log
+
+
+

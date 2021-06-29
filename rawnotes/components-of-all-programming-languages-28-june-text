@@ -1,0 +1,44 @@
+
+Structure of Computer Code
+
+Writing code is like writing an English composition:
+    There is grammar, capitalization and punctuation
+    There is breaking your codes down into paragraphs and sections with functions, procedures and classes.
+
+Code vocabulary: if/elif/else; for; while
+lines of code
+block of code
+functions, procedures  and classes
+subroutines
+  built-in functions
+  user-defined functions
+libraries of code imported into a program. 
+Comment your programs extensively; See patchsim.py as an example.
+
+Divide, Conquer and Combine: Break multi-step computer programming tasks into simpler tasks. 
+
+When learning a new programming technique, start small and incrementally build up your code's complexity. Always rely on "proof by debug" and/or "proof by Python", etc.
+
+Use stackexchange and github to read other's code for similar problems you are working on.
+
+Learn how to read and research error codes with google/stackexchange
+Learn how to embed tenporary print statements to generate output for troubleshooting and verification purposes.
+Learn how to copy working code and comment out the working code so that it is backed up while you experiment with the changes made to the code.  
+
+ Use a programming IDE with command completion and debugging.
+ 
+A function is used to calculate result using given inputs. A procedure is used to perform certain task in order. A function can be called by a procedure. A procedure cannot be called by a function.
+
+https://www.advanced-ict.info/programming/functions.html
+
+Recursion
+https://en.wikipedia.org/wiki/Recursion_(computer_science)
+
+
+=================
+bbb-shared-notes --get --text > components-of-all-programming-languages-28-june-text
+
+
+
+
+

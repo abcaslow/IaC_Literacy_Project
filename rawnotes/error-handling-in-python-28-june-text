@@ -1,0 +1,75 @@
+
+Error Handling in Python
+
+
+Use try/except blocks:
+    
+    
+Specifying except: alone catches all exceptions:
+    
+ try:
+    f = open('hello-there.csv')
+except:
+    print("Wrong file name!")
+
+Now let's specify the specific Python Error Name. Remeber to put the colon at the end of the Python error name:
+    
+try:
+    f = open('hello-there.csv')
+except FileNotFoundError:
+    print("Wrong file name!")
+
+try:
+    bdf = Table.read_table('hello-there.csv')
+except FileNotFoundError:
+    print("Check the spelling of the file name with an ls command and check the file path with pwd")
+history
+
+try:
+    x
+except: NameError
+    print ('check your spelling')
+
+
+try:
+    xx
+except NameError as ex:
+    print (ex)
+
+try:
+      xx
+except NameError as ex:
+      print ('The following variable:', ex)
+      
+      
+
+research using the "raise" and "pass" statements with Python try/except blocks.
+=================
+
+try:
+   # do something
+   pass
+except ValueError:
+   # handle ValueError exception
+   pass
+except (TypeError, ZeroDivisionError):
+   # handle multiple exceptions
+   # TypeError and ZeroDivisionError
+   pass
+except:
+   # handle all other exceptions
+   pass
+
+
+
+
+
+=================
+bbb-shared-notes --get --text > error-handling-in-python-28-june-text
+
+
+
+
+
+
+

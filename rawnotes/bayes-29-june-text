@@ -1,0 +1,28 @@
+Understanding Bayes
+
+Silver: p241: Bayes and Bob Volgaris
+
+https://inferentialthinking.com/chapters/18/1/More_Likely_than_Not_Binary_Classifier.html
+
+https://en.wikipedia.org/wiki/Ansatz
+
+https://machinelearningmastery.com/bayes-theorem-for-machine-learning/
+
+
+A good example of a Bayesian update is the realization that something is an optical illusion.
+For example, Nina had a Bayesian update when she thought she saw two lanterns in the distance but what she really saw was the reflection of her own lantern in a moose's eyes standing 10 feet away! 
+
+
+A Great Quote for Why Bayes Should Be Taught in High School https://news.ycombinator.com/item?id=27361847
+
+https://news.ycombinator.com/item?id=22959408
+Bayesian updates should be taught in schools, at least at the most coarse-grained level. Not to let people calculate anything; almost nobody is going to need that in life anyway. But so that some authority (which a school is) tells people they're allowed and supposed to update their beliefs on evidence. That evidence drags belief more in one direction than the other. That 0 and 1 are not probabilities in real life. That being certain of something is a rare thing, that they should embrace being more or less sure. That this is not someone's random worldview, but there is a proper (and rather fundamental) mathematical formalism behind it, it's just impossible to apply it fully in real life, so we have to approximate it.
+
+=======================
+https://www.mathsisfun.com/data/standard-deviation.html
+?%history
+%history -g -f test-ipython-history-log
+
+
+
+

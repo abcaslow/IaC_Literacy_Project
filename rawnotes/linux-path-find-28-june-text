@@ -1,0 +1,51 @@
+
+The location of all files in an operating system have a path to locate the exact location of a file.
+
+tree -d
+tree -d | more or tree -d | less
+tree -df
+
+
+tree -d -L 2
+tree -df -L 2
+
+abcaslow@max:~/IaC_Literacy_Project$ tree -f -P M1L*
+abcaslow@max:~/IaC_Literacy_Project$ tree -f -s -h -P M1L*
+abcaslow@max:~/IaC_Literacy_Project$ tree -f -s -h -D -P M1L*
+tree -f -s -h -D -P M1L* -o test-tree.txt
+
+https://www.tecmint.com/linux-tree-command-examples/
+
+env
+env | grep PATH
+
+which ls
+cat /bin/ls
+cd /bin
+ls
+
+which find
+cat /usr/bin/find
+cd /usr/bin
+ls
+
+file /usr/bin/find
+file /home/abcaslow/patchsim.py
+
+Check out github and check out git blame
+https://github.com/NSSAC/PatchSim/blob/master/patchsim.py
+
+Check Out Berkeley DS Connector Course on Demographics
+https://github.com/ds-connectors/LS-88-Demography
+
+This git repository has been cloned:
+
+abcaslow@max:~/LS-88-Demography/lab01$ ~/IaC_Literacy_Project/Module1-DS4HS/jupyter2pythonwithjq < lab01.ipynb 
+
+
+=================
+bbb-shared-notes --get --text > linux-path-find-28-june-text
+
+
+
+
